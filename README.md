@@ -5,6 +5,11 @@ This container can be used in your local machine to connect to DigitalOcean k8 c
 (OR)
 Can be used with yout CI/CD pipline
 
+- [Configuring for local use](#Configuring_for_local_use)
+  - [Get avialable clusters](#Get_avialable_clusters)
+  - [Get a k8 cluster you prefer](#Get_k8_cluster_you_prefer)
+  - [Execute kubectl commands](#Execute_kubectl_commands)
+
 ## Configuring for local use
 
 export TOKEN=REPLACE_YOUR_DO_ACCESS_TOKEN_HERE
@@ -31,7 +36,7 @@ thepro/doctl-helm-kubectl \
 doctl k cluster save K8_CLUSTER_NAME_FROM_LIST_ABOVE
 ```
 
-3. execute kubectl commands
+3. Execute kubectl commands
 
 ```
 docker run -i
@@ -66,7 +71,7 @@ metadata:
 spec:
   containers:
   - name: helm
-    image: gladiusthayalarajan/doctl-helm-kubectl
+    image: thepro/doctl-helm-kubectl
     command:
     - cat
     tty: true
