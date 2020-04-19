@@ -13,11 +13,11 @@ This container can be used in your local machine to connect to DigitalOcean k8 c
   - [Show your support](#show-your-support)
   - [Acknowledgments](#acknowledgments)
 
-## Configuring for local use
+## Doctl/Helm/Kubectl CLI access
 
 export TOKEN=REPLACE_YOUR_DO_ACCESS_TOKEN_HERE
 
-1. Get avialable clusters
+1. Execute individual cli commands for doctl, helm and kubectl by appending respective commands to the end after image name.
 
 ```
 docker run -i
@@ -26,39 +26,6 @@ docker run -i
 -v ~/.helm:/root/.helm \
 thepro/doctl-helm-kubectl \
 doctl k cluster list
-```
-
-2. Get a k8 cluster you prefer
-
-```
-docker run -i
--e DIGITALOCEAN_ACCESS_TOKEN=$TOKEN \
--v ~/.kube:/root/.kube \
--v ~/.helm:/root/.helm \
-thepro/doctl-helm-kubectl \
-doctl k cluster save K8_CLUSTER_NAME_FROM_LIST_ABOVE
-```
-
-3. Execute kubectl commands
-
-```
-docker run -i
--e DIGITALOCEAN_ACCESS_TOKEN=$TOKEN \
--v ~/.kube:/root/.kube \
--v ~/.helm:/root/.helm \
-thepro/doctl-helm-kubectl \
-kuebctl get nodes
-```
-
-4. Execute Helm commands:
-
-```
-docker run -i
--e DIGITALOCEAN_ACCESS_TOKEN=$TOKEN \
--v ~/.kube:/root/.kube \
--v ~/.helm:/root/.helm \
-thepro/doctl-helm-kubectl \
-helm list
 ```
 
 ## Configuring for local with alias
