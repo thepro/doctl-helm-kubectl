@@ -3,7 +3,7 @@
 An Alpine Docker image with doctl, helm 3 and kubectl executables.
 This container can be used in your local machine to connect to DigitalOcean k8 cluster
 (OR)
-**<ins> Can be used with CI/CD pipline </ins>**
+**<ins> it can be used with CI/CD pipline </ins>**
 
 - [Doctl, Helm and Kubectl in One Container](#doctl--helm-and-kubectl-in-one-container)
   - [Configuring for local use](#configuring-for-local-use)
@@ -15,13 +15,11 @@ This container can be used in your local machine to connect to DigitalOcean k8 c
 
 ## Doctl/Helm/Kubectl CLI access
 
-export TOKEN=REPLACE_YOUR_DO_ACCESS_TOKEN_HERE
-
 1. Execute individual cli commands for doctl, helm and kubectl by appending respective commands to the end after image name.
 
 ```
 docker run -i
--e DIGITALOCEAN_ACCESS_TOKEN=$TOKEN \
+-e DIGITALOCEAN_ACCESS_TOKEN=REPLACE_YOUR_DO_ACCESS_TOKEN_HERE \
 -v ~/.kube:/root/.kube \
 -v ~/.helm:/root/.helm \
 thepro/doctl-helm-kubectl \
