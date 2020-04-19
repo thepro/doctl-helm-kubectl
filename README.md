@@ -5,10 +5,13 @@ This container can be used in your local machine to connect to DigitalOcean k8 c
 (OR)
 Can be used with yout CI/CD pipline
 
-- [Configuring for local use](#Configuring_for_local_use)
-  - [Get avialable clusters](#Get_avialable_clusters)
-  - [Get a k8 cluster you prefer](#Get_k8_cluster_you_prefer)
-  - [Execute kubectl commands](#Execute_kubectl_commands)
+- [Doctl with Helm and Kubectl](#doctl-with-helm-and-kubectl)
+  - [Configuring for local use](#configuring-for-local-use)
+  - [Configuring for local with alias](#configuring-for-local-with-alias)
+  - [Configuring for CI/CD on K8](#configuring-for-ci-cd-on-k8)
+  - [Github Repo](#github-repo)
+  - [Show your support](#show-your-support)
+  - [Acknowledgments](#acknowledgments)
 
 ## Configuring for local use
 
@@ -18,7 +21,7 @@ export TOKEN=REPLACE_YOUR_DO_ACCESS_TOKEN_HERE
 
 ```
 docker run -i
--e DIGITALOCEAN_ACCESS_TOKEN=\$TOKEN \
+-e DIGITALOCEAN_ACCESS_TOKEN=$TOKEN \
 -v ~/.kube:/root/.kube \
 -v ~/.helm:/root/.helm \
 thepro/doctl-helm-kubectl \
@@ -29,7 +32,7 @@ doctl k cluster list
 
 ```
 docker run -i
--e DIGITALOCEAN_ACCESS_TOKEN=\$TOKEN \
+-e DIGITALOCEAN_ACCESS_TOKEN=$TOKEN \
 -v ~/.kube:/root/.kube \
 -v ~/.helm:/root/.helm \
 thepro/doctl-helm-kubectl \
@@ -40,7 +43,7 @@ doctl k cluster save K8_CLUSTER_NAME_FROM_LIST_ABOVE
 
 ```
 docker run -i
--e DIGITALOCEAN_ACCESS_TOKEN=\$TOKEN \
+-e DIGITALOCEAN_ACCESS_TOKEN=$TOKEN \
 -v ~/.kube:/root/.kube \
 -v ~/.helm:/root/.helm \
 thepro/doctl-helm-kubectl \
@@ -51,12 +54,22 @@ kuebctl get nodes
 
 ```
 docker run -i
--e DIGITALOCEAN_ACCESS_TOKEN=\$TOKEN \
+-e DIGITALOCEAN_ACCESS_TOKEN=$TOKEN \
 -v ~/.kube:/root/.kube \
 -v ~/.helm:/root/.helm \
 thepro/doctl-helm-kubectl \
 helm list
 ```
+
+## Configuring for local with alias
+
+export TOKEN=REPLACE_YOUR_DO_ACCESS_TOKEN_HERE
+
+alias helm="docker run -ti --rm -e DIGITALOCEAN_ACCESS_TOKEN=\$TOKEN -v ~/.kube:/root/.kube -v ~/.helm:/root/.helm thepro/doctl-helm-kubectl helm"
+
+alias kubectl="docker run -ti --rm -e DIGITALOCEAN_ACCESS_TOKEN=\$TOKEN -v ~/.kube:/root/.kube -v ~/.helm:/root/.helm thepro/doctl-helm-kubectl kubectl"
+
+alias doctl="docker run -ti --rm -e DIGITALOCEAN_ACCESS_TOKEN=\$TOKEN -v ~/.kube:/root/.kube -v ~/.helm:/root/.helm thepro/doctl-helm-kubectl doctl"
 
 ## Configuring for CI/CD on K8
 
@@ -92,3 +105,4 @@ Give a ⭐️ if this project helped you!
 
 - Uses [bash](https://hub.docker.com/_/bash) as base image
 - Inspired by [alpine/helm](https://hub.docker.com/r/alpine/helm)
+- <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
