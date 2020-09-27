@@ -1,7 +1,7 @@
 pipeline {
     agent {
         kubernetes {
-            label 'do-k8-essentials-agent-pod'
+            label 'do-k8-agent-pod'
             yamlFile 'agent.yaml'
             defaultContainer 'docker'
       }
@@ -15,10 +15,11 @@ pipeline {
         stage('Build docker') {
             steps {    
                 script {
+                    sh "cool"
                   //  docker.withRegistry("${dockerRegistry}", 'public_docker_registry_auth') {
-			        def image = docker.build("${dockerUser}/${dockerName}:${env.BUILD_ID}")
-                    image.push() 
-                    image.push('latest')
+			      //  def image = docker.build("${dockerUser}/${dockerName}:${env.BUILD_ID}")
+                 //   image.push() 
+                 //   image.push('latest')
                  //   }  
                 }
             }

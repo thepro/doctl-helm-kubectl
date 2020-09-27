@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   labels:
-    pod-name: do-k8-essentials-agent-pod
+    pod-name: do-k8-agent-pod
 spec:
   containers:
     - name: docker
