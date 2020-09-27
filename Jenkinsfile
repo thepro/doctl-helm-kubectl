@@ -15,12 +15,10 @@ pipeline {
         stage('Build docker') {
             steps {    
                 script {
-                    sh "cool"
-                  //  docker.withRegistry("${dockerRegistry}", 'public_docker_registry_auth') {
-			      //  def image = docker.build("${dockerUser}/${dockerName}:${env.BUILD_ID}")
-                 //   image.push() 
-                 //   image.push('latest')
-                 //   }  
+                    sh "docker login -u ${PUBLIC_DOCKER_REGISTRY_USERNAME} -p ${PUBLIC_DOCKER_REGISTRY_PASSWORD}"
+			        def image = docker.build("${dockerUser}/${dockerName}:${env.BUILD_ID}")
+                    image.push() 
+                    image.push('latest')
                 }
             }
         }

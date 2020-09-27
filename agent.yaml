@@ -9,16 +9,8 @@ spec:
       image: docker:dind
       securityContext:
         privileged: true
-    - name: init
-      image: busybox:1.28
-      command:
-        [
-          "sh",
-          "-c",
-          "docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY",
-        ]
-      env:
-        - name: DOCKER_BUILDKIT
-          value: 1
-        - name: DOCKER_CLI_EXPERIMENTAL
-          value: "enabled"
+      envFrom:
+        - configMapRef:
+            name: cd-config
+        - secretRef:
+            name: cd-secrets
