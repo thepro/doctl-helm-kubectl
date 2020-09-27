@@ -9,11 +9,16 @@ spec:
       image: docker:dind
       securityContext:
         privileged: true
+      env:
+        - name: DOCKER_BUILDKIT
+          value: 1
+        - name: DOCKER_CLI_EXPERIMENTAL
+          value: "enabled"
+    - name: helm
+      image: thepro/doctl-helm-kubectl
       envFrom:
         - secretRef:
             name: cd-secrets
-        - configMapRef:
-            name: cd-config
       command:
         - cat
       tty: true
