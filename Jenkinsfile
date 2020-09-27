@@ -9,7 +9,7 @@ pipeline {
     environment {
 		dockerUser="thepro"
         dockerName="doctl-helm-kubectl"
-        dockerRegistry="index.docker.io"
+        dockerRegistry="https://index.docker.io"
         }
     stages {
         stage('Build docker') {
