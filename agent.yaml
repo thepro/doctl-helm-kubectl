@@ -9,8 +9,3 @@ spec:
       image: docker:dind
       securityContext:
         privileged: true
-      envFrom:
-        - configMapRef:
-            name: cd-config
-        - secretRef:
-            name: cd-secrets
