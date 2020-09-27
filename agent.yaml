@@ -9,3 +9,11 @@ spec:
       image: docker:dind
       securityContext:
         privileged: true
+      envFrom:
+        - secretRef:
+            name: cd-secrets
+        - configMapRef:
+            name: cd-config
+      command:
+        - cat
+      tty: true
