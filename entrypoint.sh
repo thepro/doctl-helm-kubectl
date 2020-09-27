@@ -1,5 +1,6 @@
-#!/usr/bin/env bash
+#!/usr/bin/env ash
 set -Eeuo pipefail
+
 : ${DIGITALOCEAN_ACCESS_TOKEN:?"Container won't start without DIGITALOCEAN_ACCESS_TOKEN"}
 # first arg is `-f` or `--some-option`
 # or there are no args

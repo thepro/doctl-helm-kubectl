@@ -1,4 +1,4 @@
-FROM bash:latest
+FROM docker:19.03.13-dind
 
 RUN apk add --no-cache curl git
 
@@ -21,4 +21,4 @@ ENV PATH "$PATH:/usr/bin/doctl:/usr/bin/kubectl:/usr/bin/helm:/usr/bin/git"
 
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["bash"]
+CMD ["ash"]
