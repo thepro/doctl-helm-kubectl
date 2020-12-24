@@ -87,7 +87,7 @@ spec:
 
 ## Github Repo
 
-https://github.com/thepro-io/doctl-helm-kubectl
+https://github.com/gladius/do-k8-ci-essentials
 
 ## Show your support
 
